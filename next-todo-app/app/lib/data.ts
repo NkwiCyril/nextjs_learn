@@ -4,7 +4,7 @@ import { Todo } from "./definition";
 export async function createTodo(todo: { title: string; description: string }) {
   try {
     const { title, description } = todo;
-
+    
     if (!title || !description) {
       throw new Error("Title and description are required");
     }
@@ -23,9 +23,7 @@ export async function createTodo(todo: { title: string; description: string }) {
 
 export async function getTodos() {
   try {
-    const todos = await sql<Todo>`
-      SELECT * FROM todos`;
-
+    const todos = await sql<Todo>`SELECT * FROM todos`;
     return todos.rows;
   } catch (error) {
     console.error("Database Error:", error);

@@ -1,11 +1,10 @@
 import { getTodos } from "../lib/data";
+import { Todo } from "../lib/definition";
 import { todos } from "../lib/placeholder-data";
 import clsx from "clsx";
 
 export default async function Table() {
-
   const todos = await getTodos();
-
   return (
     <div className="flex flex-col">
       <div className="-m-1.5 overflow-x-auto">
