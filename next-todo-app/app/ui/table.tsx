@@ -1,11 +1,10 @@
-"use client";
-
+import { getTodos } from "../lib/data";
 import { todos } from "../lib/placeholder-data";
 import clsx from "clsx";
 
-export default function Table() {
+export default async function Table() {
 
-  
+  const todos = await getTodos();
 
   return (
     <div className="flex flex-col">
