@@ -18,7 +18,7 @@ const PatientForm = () => {
     defaultValues: {
       name: "",
       email: "",
-      phone_number: "",
+      phone: "",
     },
   });
 
@@ -61,7 +61,7 @@ const PatientForm = () => {
 
         <CustomFormField
           label="Phone Number"
-          name="phone_number"
+          name="phone"
           placeholder="+237 651085550"
           control={form.control}
           fieldType={FormFieldType.PHONE_INPUT}
