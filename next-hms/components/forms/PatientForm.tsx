@@ -8,10 +8,12 @@ import CustomFormField, { FormFieldType } from "../CustomFormField";
 import SubmitButton from "../SubmitButton";
 import { useState } from "react";
 import { UserFormValidation } from "@/lib/validation";
+import { useRouter } from "next/navigation";
 
 const PatientForm = () => {
 
-  const [loading, setloading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
 
   const form = useForm<z.infer<typeof UserFormValidation>>({
     resolver: zodResolver(UserFormValidation),
@@ -25,15 +27,26 @@ const PatientForm = () => {
 
   function onSubmit(values: z.infer<typeof UserFormValidation>) {
 
-    setloading(true)
+    setIsLoading(true)
 
     try {
+
+      console.log(values);
       
+      // const userData = {
+      //   name: values.name,
+      //   email: values.email,
+      //   phone: values.phone,
+      // }
+
+      // const user = await createUser(userData);
+
+      // if(user) router.push(`/patients/${user.$id}/register`);
+
     } catch (error) {
-      console.error("Error encountered while submitting form")
+      console.log(`Error encountered: ${error}`)
     }
 
-    console.log(values);
   }
 
   return (
@@ -68,7 +81,7 @@ const PatientForm = () => {
         />
         <SubmitButton 
           children={"Get Started"}
-          isLoading={loading}
+          isLoading={isLoading}
           className="w-full text-white bg-green-500 hover:bg-green-400"
         />
       </form>
