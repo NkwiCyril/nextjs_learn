@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Plus_Jakarta_Sans } from "next/font/google";
+import { Figtree, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/components/ThemeProvider";
@@ -10,6 +10,11 @@ const jakarta_sans = Plus_Jakarta_Sans({
   variable: "--font-sans",
   display: "swap",
 });
+
+const figtree = Figtree({
+  subsets: ["latin"],
+  variable: "--font-sans",
+})
 
 export const metadata: Metadata = {
   title: "HealthLine",
@@ -27,7 +32,7 @@ export default function RootLayout({
       <body
         className={cn(
           "min-h-screen bg-dark-300 font-sans antialiased",
-          jakarta_sans.variable
+          figtree.variable
         )}
       >
         <ThemeProvider
