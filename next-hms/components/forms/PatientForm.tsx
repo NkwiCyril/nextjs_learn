@@ -9,6 +9,7 @@ import SubmitButton from "../SubmitButton";
 import { useState } from "react";
 import { UserFormValidation } from "@/lib/validation";
 import { useRouter } from "next/navigation";
+import { createUser } from "@/lib/actions/patient.actions";
 
 const PatientForm = () => {
 
@@ -25,26 +26,28 @@ const PatientForm = () => {
   });
 
 
-  function onSubmit(values: z.infer<typeof UserFormValidation>) {
+  async function onSubmit(values: z.infer<typeof UserFormValidation>) {
 
     setIsLoading(true)
 
     try {
-
-      console.log(values);
       
-      // const userData = {
-      //   name: values.name,
-      //   email: values.email,
-      //   phone: values.phone,
-      // }
+      const userData = {
+        name: values.name,
+        email: values.email,
+        phone: values.phone,
+      }
 
-      // const user = await createUser(userData);
+      const user = await createUser(userData);
 
-      // if(user) router.push(`/patients/${user.$id}/register`);
+      if(user) router.push(`/patients/1/register`);
+
+      setIsLoading(false)
 
     } catch (error) {
       console.log(`Error encountered: ${error}`)
+
+      setIsLoading(false)
     }
 
   }
