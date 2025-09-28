@@ -1,6 +1,7 @@
 import { ID, Query } from "node-appwrite";
 import { createAppwriteClient } from "../appwrite.config";
 import { email } from "zod";
+import { parseStringify } from "../utils";
 
 const { users } = createAppwriteClient();
 
@@ -25,3 +26,17 @@ export const createUser = async (user: CreateUserParams) => {
     }
   }
 };
+
+export const getUser = async (userId: string) => {
+  try {
+    
+    if(!userId) return null;
+
+    const user = await users.get(userId);
+
+    return parseStringify(user);
+
+  } catch (error: any) {
+    console.log(`Error fetching user: ${error}`);
+  }
+}

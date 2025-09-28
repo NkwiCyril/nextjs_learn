@@ -40,7 +40,7 @@ const PatientForm = () => {
 
       const user = await createUser(userData);
 
-      if(user) router.push(`/patients/1/register`);
+      if(user) router.push(`/patients/${user.$id}/register`);
 
       setIsLoading(false)
 
@@ -61,7 +61,7 @@ const PatientForm = () => {
           placeholder="Nkwi Cyril"
           control={form.control}
           fieldType={FormFieldType.INPUT}
-          iconSrc={"assets/icons/user.svg"}
+          iconSrc="assets/icons/user.svg"
           iconAlt={"user icon"}
         />
 
@@ -71,7 +71,7 @@ const PatientForm = () => {
           placeholder="akinimbomnkwi@gmail.com"
           control={form.control}
           fieldType={FormFieldType.INPUT}
-          iconSrc={"assets/icons/email.svg"}
+          iconSrc="assets/icons/email.svg"
           iconAlt={"email"}
         />
 
